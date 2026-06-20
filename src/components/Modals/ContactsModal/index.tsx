@@ -1,4 +1,7 @@
 import { Box, Grid2, Modal, Typography, useMediaQuery } from "@mui/material";
+import linkedinRound from "../../../assets/Portfolio/linkedinRound.png";
+import whatsapp from "../../../assets/Portfolio/whatsapp.png";
+import mail from "../../../assets/Portfolio/mail.png";
 
 type ModalProjectCard = {
   open: boolean;
@@ -66,7 +69,16 @@ export const ContactsModal: React.FC<ModalProjectCard> = ({
             flexDirection={"column"}
             alignItems={"center"}
             gap={3}
-            sx={{ cursor: "pointer" }}
+            sx={{ 
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                transform: "translateY(-5px)",
+                "& img": {
+                  filter: "brightness(1.2)",
+                }
+              }
+            }}
             onClick={() => {
               openInNewTab(
                 "https://www.linkedin.com/in/leonardo-panigassi-imenes-871b7a132/"
@@ -75,9 +87,13 @@ export const ContactsModal: React.FC<ModalProjectCard> = ({
           >
             <Box
               component="img"
-              src={"src/assets/Portfolio/linkedinRound.png"}
-              alt={`whatsappImg`}
-              sx={{ objectFit: "contain" }}
+              src={linkedinRound}
+              alt={`linkedinImg`}
+              sx={{ 
+                objectFit: "contain",
+                transition: "all 0.3s ease",
+                filter: "brightness(0.9)",
+              }}
               width={{ xs: "50px" }}
             />
             <Typography variant={!isMobile ? "h6" : "body2"} color="primary">
@@ -89,7 +105,16 @@ export const ContactsModal: React.FC<ModalProjectCard> = ({
             flexDirection={"column"}
             alignItems={"center"}
             gap={3}
-            sx={{ cursor: "pointer" }}
+            sx={{ 
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                transform: "translateY(-5px)",
+                "& img": {
+                  filter: "brightness(1.2)",
+                }
+              }
+            }}
             onClick={() => {
               window.open(
                 `https://wa.me/+5519997256706?text=${encodeURI(
@@ -101,9 +126,13 @@ export const ContactsModal: React.FC<ModalProjectCard> = ({
           >
             <Box
               component="img"
-              src={"src/assets/Portfolio/whatsapp.png"}
+              src={whatsapp}
               alt={`whatsappImg`}
-              sx={{ objectFit: "contain" }}
+              sx={{ 
+                objectFit: "contain",
+                transition: "all 0.3s ease",
+                filter: "brightness(0.9)",
+              }}
               width={{ xs: "50px" }}
             />
             <Typography variant={!isMobile ? "h6" : "body2"} color="primary">
@@ -116,13 +145,26 @@ export const ContactsModal: React.FC<ModalProjectCard> = ({
             flexDirection={"column"}
             alignItems={"center"}
             gap={3}
-            sx={{ cursor: "pointer" }}
+            sx={{ 
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                transform: "translateY(-5px)",
+                "& img": {
+                  filter: "brightness(1.2)",
+                }
+              }
+            }}
           >
             <Box
               component="img"
-              src={"src/assets/Portfolio/mail.png"}
-              alt={`whatsappImg`}
-              sx={{ objectFit: "contain" }}
+              src={mail}
+              alt={`mailImg`}
+              sx={{ 
+                objectFit: "contain",
+                transition: "all 0.3s ease",
+                filter: "brightness(0.9)",
+              }}
               width={{ xs: "50px" }}
               onClick={() => {
                 window.open(

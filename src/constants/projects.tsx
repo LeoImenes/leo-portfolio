@@ -1,19 +1,39 @@
+import Js from "../assets/Portfolio/Js.png";
+import react from "../assets/Portfolio/react.png";
+import html from "../assets/Portfolio/html.png";
+import css from "../assets/Portfolio/css.png";
+import figma from "../assets/Portfolio/figma.png";
+import java from "../assets/Portfolio/java.png";
+import python from "../assets/Portfolio/python.png";
+import letterC from "../assets/Portfolio/letter-c.png";
+import motherboard from "../assets/Portfolio/motherboard.png";
+import ts from "../assets/Portfolio/ts.png";
+import mui from "../assets/Portfolio/mui.png";
+import saas from "../assets/Portfolio/saas.png";
+import next from "../assets/Portfolio/next.png";
+import JRMTaxi from "../assets/Portfolio/JRMTaxi.png";
+import Ludo2 from "../assets/Portfolio/Ludo2.png";
+import ONG from "../assets/Portfolio/ONG.png";
+import RoboCompilador from "../assets/Portfolio/robocop.png";
+import RedesNeuraisPY from "../assets/Portfolio/rnpy.png";
+import bracoRobo from "../assets/Portfolio/bracoRobo.jpg";
+import CMDChatbot from "../assets/Portfolio/cmd.png";
 
 export const languagesEnum: Record<string, string> = {
-  JavaScript: "src/assets/Portfolio/Js.png",
-  React: "src/assets/Portfolio/react.png",
-  HTML: "src/assets/Portfolio/html.png",
-  CSS: "src/assets/Portfolio/css.png",
-  Figma: "src/assets/Portfolio/figma.png",
-  ReactNative: "src/assets/Portfolio/react.png",
-  Java: "src/assets/Portfolio/java.png",
-  Python: "src/assets/Portfolio/python.png",
-  CSharp: "src/assets/Portfolio/letter-c.png",
-  Arduino: "src/assets/Portfolio/motherboard.png",
-  TypeScript: "src/assets/Portfolio/TypeScript.png",
-  MaterialUI: "src/assets/Portfolio/mui.png",
-  Saas:"src/assets/Portfolio/saas.png",
-  NextJS:"src/assets/Portfolio/next.png"
+  JavaScript: Js,
+  React: react,
+  HTML: html,
+  CSS: css,
+  Figma: figma,
+  ReactNative: react,
+  Java: java,
+  Python: python,
+  CSharp: letterC,
+  Arduino: motherboard,
+  TypeScript: ts,
+  MaterialUI: mui,
+  Saas: saas,
+  NextJS: next,
 };
 
 export const Projects = [
@@ -22,7 +42,7 @@ export const Projects = [
     name: "JRMTaxi",
     description:
       "App de catalogo de taxistas com objetivo de facilitar o contato entre clientes de taxistas",
-    image: "src/assets/Portfolio/JRMTaxi.png",
+    image: JRMTaxi,
     languages: ["React Native", "Figma"],
   },
   {
@@ -31,7 +51,7 @@ export const Projects = [
     description:
       "Jogo Ludo com finalidade de praticar lógica de programação, manipulação do DOM, algoritmos e interação com o usuário",
     languages: ["HTML", "CSS", "JavaScript"],
-    image: "src/assets/Portfolio/Ludo2.png",
+    image: Ludo2,
   },
   {
     id: 3,
@@ -39,7 +59,7 @@ export const Projects = [
     description:
       "Projeto com finalidade de simular o sistema interno de uma ONG que acolhe pessoas com diversas necessidades",
     languages: ["ReactJS", "Figma", "React Native", "Java"],
-    image: "src/assets/Portfolio/ONG.png",
+    image: ONG,
   },
   {
     id: 4,
@@ -47,7 +67,7 @@ export const Projects = [
     description:
       "Consiste na construção de uma linguagem de programação que será utilizada para conduzir um robô na travessia de um campo",
     languages: ["HTML", "CSS", "JavaScript"],
-    image: "src/assets/Portfolio/RoboCompilador.png",
+    image: RoboCompilador,
   },
   {
     id: 5,
@@ -55,20 +75,20 @@ export const Projects = [
     description:
       "O projeto utiliza três redes neurais integradas para otimizar o cultivo em uma estufa.",
     languages: ["Python"],
-    image: "src/assets/Portfolio/RedesNeuraisPY.png",
+    image: RedesNeuraisPY,
   },
   {
     id: 6,
     name: "Braço Robótico",
     description: "Braço robotico com programação manual e automática",
     languages: ["Arduino", "C#"],
-    image: "src/assets/Portfolio/bracoRobo.jpg",
+    image: bracoRobo,
   },
   {
     id: 7,
     name: "CMD chatbot",
     description: "Assistente local para auxiliar o usuário",
     languages: ["JavaScript"],
-    image: "src/assets/Portfolio/CMDChatbot.png",
+    image: CMDChatbot,
   },
 ];

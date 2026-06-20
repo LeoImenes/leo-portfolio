@@ -1,8 +1,6 @@
 import {
   Box,
-  Divider,
   Grid2,
-  Stack,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -24,11 +22,10 @@ function App() {
   const [scopeBox, animateBox] = useAnimate();
   const [showText, setShowText] = useState(false);
   const isInView = useInView(scopeBox, { once: true });
+
   useEffect(() => {
     const controls = animate([[scope.current, { x: ["-26%", "0%"] }]]);
-
     controls.speed = 0.5;
-
     return () => controls.stop();
   }, []);
 
@@ -46,68 +43,173 @@ function App() {
     <Box sx={{ backgroundColor: "primary.main" }}>
       <Header />
       <AboutMe />
-      <Stack
-        mt={isMobile ? 0 : 7}
-        spacing={5}
-        direction={isMobile ? "column" : "row"}
-        justifyContent="space-evenly"
-        px={isMobile ? 2 : 10}
-        mr={isMobile ? 0 : 15}
-        width={"100%"}
+
+      {/* ── Sobre mim ── */}
+      <Box
+        id="about-text"
+        sx={{
+          px: { xs: 3, sm: 5, md: 10 },
+          pt: { xs: 3, md: 4 },
+          pb: { xs: 2, md: 3 },
+          display: "flex",
+          justifyContent: "center",
+        }}
       >
         <Box
           textAlign={isMobile ? "center" : "start"}
-          display={"flex"}
-          flexDirection={"column"}
-          height={isMobile ? "undefined" : "50vh"}
-          alignItems={""}
-          order={{ xs: 2, sm: 2, md: 1 }}
-          width={!isMobile ? "620px" : "100%"}
-          sx={{ overflowY: isMobile ? "auto" : "none" }}
-          mb={5}
+          display="flex"
+          flexDirection="column"
+          sx={{
+            width: "100%",
+            maxWidth: "860px",
+            position: "relative",
+            overflow: "hidden",
+            background: darkMode
+              ? "linear-gradient(145deg, rgba(22,37,54,0.85) 0%, rgba(13,27,42,0.95) 100%)"
+              : "#ffffff3a",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            border: `1px solid ${
+              darkMode ? "rgba(0,180,216,0.18)" : "rgba(0,119,182,0.14)"
+            }`,
+            borderRadius: "24px",
+            p: { xs: 3.5, md: 5 },
+            boxShadow: darkMode
+              ? "0 8px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05)"
+              : "0 8px 32px rgba(0,119,182,0.08), inset 0 1px 0 rgba(255,255,255,0.9)",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "2px",
+              background:
+                "linear-gradient(90deg, transparent 0%, #00B4D8 50%, transparent 100%)",
+              opacity: darkMode ? 0.5 : 0.35,
+              borderRadius: "24px 24px 0 0",
+            },
+          }}
         >
-          <Typography
-            variant={!isMobile ? "h5" : "h6"}
-            fontWeight="800"
-            color="primary"
-            mt={isMobile ? 5 : 0}
-          >
-            Sobre mim
-          </Typography>
-          <Typography
-            mt={2}
-            variant="h6"
-            color="textPrimary"
-            className="aboutMeText"
-            textAlign={isMobile ? "center" : "start"}
-            ref={scope}
+          {/* ── Header: emoji + label ── */}
+          <Box
             sx={{
-              maxHeight: isMobile ? (!showText ? "200px" : "100%") : "350px",
-              overflowY: isMobile ? "hidden" : "hidden",
-              paddingRight: isMobile ? "16px" : "0",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 0.6,
+              mb: 3,
+              pb: 2.5,
+              borderBottom: `1px solid ${
+                darkMode ? "rgba(0,180,216,0.1)" : "rgba(0,119,182,0.08)"
+              }`,
             }}
           >
-            Desenvolvedor com experiência em ReactJS, TypeScript e ferramentas
-            como MUI, React Hook Form, Vite e muito mais. Focado em interfaces
-            modernas, responsivas e de alta performance, com deploy contínuo,
-            testes automatizados e integração com APIs REST. Proativo, orientado
-            a resultados, e aplicando boas práticas de desenvolvimento,
-            versionamento com Git/GitHub e metodologias ágeis como SCRUM. Busco
-            aprimorar habilidades com desafios de programação e projetos
-            pessoais. Formado em Ciências da Computação e Técnico em Análise e
-            Desenvolvimento de Sistemas, pronto para contribuir com soluções
-            inovadoras no desenvolvimento web.
-          </Typography>
+            <Box
+              sx={{
+                fontSize: { xs: "2rem", md: "2.4rem" },
+                lineHeight: 1,
+                animation: "floatEmoji 3.5s ease-in-out infinite",
+                userSelect: "none",
+                filter: "drop-shadow(0 4px 8px rgba(0,180,216,0.25))",
+              }}
+            >
+              👨‍💻
+            </Box>
+            <Typography
+              variant="overline"
+              color="secondary"
+              sx={{ letterSpacing: 3.5, fontWeight: 700, fontSize: "0.65rem", mt: 0.3 }}
+            >
+              Quem sou eu
+            </Typography>
+            <Box
+              sx={{
+                width: 40,
+                height: 2,
+                borderRadius: 99,
+                background: "linear-gradient(90deg, transparent, #00B4D8, transparent)",
+                mt: 0.2,
+                opacity: 0.7,
+              }}
+            />
+          </Box>
+
+          {/* ── Text with inline quotes ── */}
+          <Box sx={{ px: { xs: 0, md: 1 } }}>
+            <Box
+              component="span"
+              sx={{
+                fontSize: { xs: "3.5rem", md: "4.2rem" },
+                lineHeight: 0,
+                verticalAlign: "-0.5em",
+                color: darkMode ? "#00B4D8" : "#0077B6",
+                opacity: 0.22,
+                fontFamily: "Georgia, serif",
+                animation: "floatQuote 5s ease-in-out infinite",
+                display: "inline-block",
+                mr: 0.8,
+                userSelect: "none",
+              }}
+            >
+              &ldquo;
+            </Box>
+
+            <Typography
+              component="span"
+              variant="body1"
+              className="aboutMeText"
+              ref={scope}
+              sx={{
+                color: darkMode ? "#94A3B8" : "#475569",
+                lineHeight: 1.9,
+                fontSize: { xs: "0.92rem", md: "0.97rem" },
+                display: "inline",
+                letterSpacing: "0.1px",
+              }}
+            >
+              Desenvolvedor com experiência em ReactJS, TypeScript e ferramentas
+              como MUI, React Hook Form, Vite e muito mais. Focado em interfaces
+              modernas, responsivas e de alta performance, com deploy contínuo,
+              testes automatizados e integração com APIs REST. Proativo, orientado
+              a resultados, e aplicando boas práticas de desenvolvimento,
+              versionamento com Git/GitHub e metodologias ágeis como SCRUM. Busco
+              aprimorar habilidades com desafios de programação e projetos
+              pessoais. Formado em Ciências da Computação e Técnico em Análise e
+              Desenvolvimento de Sistemas, pronto para contribuir com soluções
+              inovadoras no desenvolvimento web.
+            </Typography>
+
+            <Box
+              component="span"
+              sx={{
+                fontSize: { xs: "3.5rem", md: "4.2rem" },
+                lineHeight: 0,
+                verticalAlign: "-0.5em",
+                color: darkMode ? "#00B4D8" : "#0077B6",
+                opacity: 0.22,
+                fontFamily: "Georgia, serif",
+                animation: "floatQuote 5s ease-in-out infinite",
+                animationDelay: "2.5s",
+                display: "inline-block",
+                ml: 0.8,
+                userSelect: "none",
+              }}
+            >
+              &rdquo;
+            </Box>
+          </Box>
+
           {isMobile && (
             <Typography
               onClick={handleShowText}
               variant="body2"
-              m={2}
-              color="secondary"
+              mt={1.5}
               sx={{
-                width: "80px",
+                color: darkMode ? "#00B4D8" : "#0077B6",
                 textDecoration: "underline",
                 cursor: "pointer",
+                fontWeight: 600,
                 textAlign: "start",
               }}
             >
@@ -115,48 +217,95 @@ function App() {
             </Typography>
           )}
         </Box>
-        {!isMobile && (
-          <Divider
-            orientation="vertical"
-            variant="fullWidth"
-            flexItem
+      </Box>
+
+      {/* ── Skills ── */}
+      <Box sx={{ px: { xs: 2, sm: 4, md: 10 }, pt: { xs: 2, md: 3 }, pb: 0 }}>
+        <SkillsSection isMobile={isMobile} />
+      </Box>
+
+      {/* ── Projects section ── */}
+      <Box
+        id="projects"
+        ref={scopeBox}
+        sx={{
+          mt: { xs: 3, md: 5 },
+          pb: { xs: 6, md: 10 },
+          px: { xs: 2, md: 6 },
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          position: "relative",
+        }}
+      >
+        <Box textAlign="center" mb={5}>
+          <Typography
+            variant="overline"
+            color="secondary"
+            sx={{ letterSpacing: 2.5, fontWeight: 700, fontSize: "0.68rem" }}
+          >
+            O que construí
+          </Typography>
+          <Typography
+            variant={!isMobile ? "h3" : "h4"}
+            fontWeight={800}
+            sx={{ color: darkMode ? "#E2E8F0" : "#0D1B2A", mt: 0.5 }}
+          >
+            Projetos
+          </Typography>
+          <Box
             sx={{
-              height: "30vh",
-              order: 2,
-              width: 2,
-              backgroundColor: !darkMode ? "#1B263B" : "#fff",
+              width: 56,
+              height: 4,
+              borderRadius: 99,
+              background: "linear-gradient(90deg, #00B4D8, #0077B6)",
+              mx: "auto",
+              mt: 1.5,
             }}
           />
-        )}
-        <SkillsSection isMobile={isMobile} />
-      </Stack>
-      <Box
-        mt={!isMobile ? 10 : 0}
-        display={"flex"}
-        flexDirection={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        textAlign={"center"}
-        ref={scopeBox}
-      >
-        <Typography
-          variant={!isMobile ? "h5" : "h6"}
-          fontWeight="800"
-          color="primary"
-          mt={5}
+          <Typography
+            variant="body2"
+            sx={{
+              mt: 1.5,
+              color: darkMode ? "#4A6078" : "#94A3B8",
+              maxWidth: "440px",
+              mx: "auto",
+              lineHeight: 1.7,
+            }}
+          >
+            Uma seleção de projetos pessoais e acadêmicos que mostram minha
+            evolução como desenvolvedor.
+          </Typography>
+        </Box>
+
+        <Grid2
+          container
+          justifyContent="center"
+          sx={{ width: "100%", maxWidth: "1200px" }}
         >
-          Projetos
-        </Typography>
-        <Grid2 container my={2} px={!isMobile ? 10 : 0} display={'flex'} justifyContent={!isMobile ?'space-between' : 'center'}>
           {Projects.map((project, index) => (
             <PortfolioCard key={index} portfolio={project} />
           ))}
         </Grid2>
       </Box>
-      <Box component={"footer"} textAlign={"center"} m={2}>
-        <Typography color="primary">
-          Todos os direitos reservados a Leonardo Panigassi Imenes -{" "}
-          {date.getUTCFullYear().toString()}
+
+      {/* ── Footer ── */}
+      <Box
+        component="footer"
+        sx={{
+          textAlign: "center",
+          py: 3,
+          borderTop: `1px solid ${
+            darkMode ? "rgba(0,180,216,0.1)" : "rgba(0,119,182,0.08)"
+          }`,
+        }}
+      >
+        <Typography
+          variant="body2"
+          sx={{ color: darkMode ? "#4A6078" : "#94A3B8", fontSize: "0.8rem" }}
+        >
+          © {date.getUTCFullYear()} Leonardo Panigassi Imenes — Todos os
+          direitos reservados
         </Typography>
       </Box>
     </Box>

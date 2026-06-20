@@ -1,52 +1,85 @@
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    70% {
-        transform: scale(1.1);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+/* ─── Hero background blobs ─────────────────────────────────── */
+.hero-blob {
+  display: none;
 }
 
-@keyframes changeFontFamily {
-    0% {
-        font-family: 'Courier New', Courier, monospace;
-    }
-
-    25% {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-
-    50% {
-        font-family: cursive;
-    }
-
-    75% {
-        font-family: 'Times New Roman', Times, serif
-    }
-
-
-    100% {
-        font-family: fantasy;
-    }
+/* ─── Photo glow ────────────────────────────────────────────── */
+.photo-glow {
+  display: none;
 }
 
-
-
-.myNameTyp {
-    animation: changeFontFamily 10s infinite;
-
+/* ─── Spinning dashed ring ──────────────────────────────────── */
+.photo-ring-spin {
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--ring-color, rgba(0,180,216,0.22));
+  z-index: 1;
+  animation: ring-spin 30s linear infinite;
 }
 
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
 
+/* ─── Orbiting dots ─────────────────────────────────────────── */
+.orbit-dot {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 4;
+  background: var(--dot-color, #00B4D8);
+  box-shadow: 0 0 12px var(--dot-color, #00B4D8);
+}
 
+.orbit-dot--a {
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-a 7s linear infinite;
+}
+
+.orbit-dot--b {
+  width: 7px;
+  height: 7px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-b 11s linear infinite;
+}
+
+.orbit-dot--c {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-c 9s linear infinite 1.5s;
+}
+
+/* Orbit keyframes — radius is half of (photo + ring offset)
+   We translate by ~170px to keep the dot on the ring edge */
+@keyframes orbit-a {
+  from { transform: rotate(0deg)   translateX(170px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(170px) rotate(-360deg); }
+}
+
+@keyframes orbit-b {
+  from { transform: rotate(120deg) translateX(170px) rotate(-120deg); }
+  to   { transform: rotate(480deg) translateX(170px) rotate(-480deg); }
+}
+
+@keyframes orbit-c {
+  from { transform: rotate(240deg) translateX(170px) rotate(-240deg); }
+  to   { transform: rotate(600deg) translateX(170px) rotate(-600deg); }
+}
+
+/* ─── Fade in up ────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Button base ───────────────────────────────────────────── */
 button:hover {
-    transform: scale(1.1);
-    transition: .4s all;
-
-
+  transition: 0.3s all;
 }

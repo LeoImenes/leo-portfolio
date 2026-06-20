@@ -1,42 +1,62 @@
-/* @keyframes slide-in {
-    from {
-        translate: 150vw 0;
-        scale: 200% 1;
-    }
-
-    to {
-        translate: 0 0;
-        scale: 100% 1;
-    }
+/* ─── Float quote & emoji ──────────────────────────────── */
+@keyframes floatQuote {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); opacity: 0.30; }
+  50%       { transform: translateY(-4px) rotate(0deg); opacity: 0.45; }
 }
 
+@keyframes floatEmoji {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ─── Fade in up ───────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Scale in ─────────────────────────────────────────── */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ─── Gradient background animation ───────────────────── */
+@keyframes gradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─── Float (generic) ──────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-16px); }
+}
+
+/* ─── Carousel slide (legacy, kept for compatibility) ──── */
 @keyframes slide {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
 
+/* ─── Utility animation classes ────────────────────────── */
 .aboutMeText {
-    animation-duration: .5s;
-    animation-name: slide-in;
-    animation-iteration-count: forwards;
+  animation: fadeInUp 0.8s ease-out;
 }
 
-
-#carroussel {
-    display: flex;
-    position: absolute;
-    left: 0;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    animation: slide 20s linear infinite;
-
-    &:hover {
-        animation-play-state: paused;
-    }
-} */
+.aboutMeCard {
+  animation: fadeInUp 0.6s ease-out;
+}
