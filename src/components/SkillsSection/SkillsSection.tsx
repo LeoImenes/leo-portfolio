@@ -3,7 +3,7 @@ import { skillsImage } from "../../constants/skills";
 import { useDarkMode } from "../../hooks/useDarkMode";
 import "./SkillsSection.css";
 
-function SkillsSection({ isMobile }: { isMobile: boolean }) {
+function SkillsSection({ isMobile, isSmallMobile }: { isMobile: boolean; isSmallMobile: boolean }) {
   const { darkMode } = useDarkMode();
   // Triple-duplicate so the track never visibly resets on any screen width
   const row = [...skillsImage, ...skillsImage, ...skillsImage];

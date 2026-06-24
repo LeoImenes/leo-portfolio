@@ -73,6 +73,50 @@
   to   { transform: rotate(600deg) translateX(170px) rotate(-600deg); }
 }
 
+/* ─── Responsive orbit adjustments ──────────────────────────── */
+@media (max-width: 768px) {
+  .orbit-dot--a { animation-name: orbit-a-sm; }
+  .orbit-dot--b { animation-name: orbit-b-sm; }
+  .orbit-dot--c { animation-name: orbit-c-sm; }
+}
+
+@keyframes orbit-a-sm {
+  from { transform: rotate(0deg)   translateX(130px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(130px) rotate(-360deg); }
+}
+
+@keyframes orbit-b-sm {
+  from { transform: rotate(120deg) translateX(130px) rotate(-120deg); }
+  to   { transform: rotate(480deg) translateX(130px) rotate(-480deg); }
+}
+
+@keyframes orbit-c-sm {
+  from { transform: rotate(240deg) translateX(130px) rotate(-240deg); }
+  to   { transform: rotate(600deg) translateX(130px) rotate(-600deg); }
+}
+
+@media (max-width: 480px) {
+  .orbit-dot--a { animation-name: orbit-a-xs; }
+  .orbit-dot--b { animation-name: orbit-b-xs; }
+  .orbit-dot--c { animation-name: orbit-c-xs; }
+  .photo-ring-spin { inset: -16px; }
+}
+
+@keyframes orbit-a-xs {
+  from { transform: rotate(0deg)   translateX(100px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+@keyframes orbit-b-xs {
+  from { transform: rotate(120deg) translateX(100px) rotate(-120deg); }
+  to   { transform: rotate(480deg) translateX(100px) rotate(-480deg); }
+}
+
+@keyframes orbit-c-xs {
+  from { transform: rotate(240deg) translateX(100px) rotate(-240deg); }
+  to   { transform: rotate(600deg) translateX(100px) rotate(-600deg); }
+}
+
 /* ─── Fade in up ────────────────────────────────────────────── */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(28px); }

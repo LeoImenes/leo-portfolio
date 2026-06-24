@@ -130,3 +130,10 @@
   .skills-track { gap: 1.1rem; animation-duration: 18s; }
   .skill-item { padding: 8px 10px 7px; border-radius: 9px; }
 }
+
+@media (max-width: 480px) {
+  .skills-carousel::before,
+  .skills-carousel::after { width: 24px; }
+  .skills-track { gap: 0.8rem; animation-duration: 15s; }
+  .skill-item { padding: 6px 8px 5px; border-radius: 7px; }
+}

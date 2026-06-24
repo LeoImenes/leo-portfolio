@@ -1,9 +1,4 @@
-import {
-  Box,
-  Grid2,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Grid2, Typography, useMediaQuery } from "@mui/material";
 import { useAnimate, useInView } from "framer-motion";
 import { useEffect, useState } from "react";
 import "./app.css";
@@ -13,9 +8,12 @@ import PortfolioCard from "./components/ProjectsCard";
 import SkillsSection from "./components/SkillsSection/SkillsSection";
 import { Projects } from "./constants/projects";
 import { useDarkMode } from "./hooks/useDarkMode";
+import { PublicProjects } from "./constants/publicProjects";
+import PublicProjectCard from "./components/PublicProjectCard";
 
 function App() {
-  const isMobile = useMediaQuery("(max-width:900px)");
+  const isMobile = useMediaQuery("(max-width:768px)");
+  const isSmallMobile = useMediaQuery("(max-width:480px)");
   const { darkMode } = useDarkMode();
   const date = new Date();
   const [scope, animate] = useAnimate();
@@ -107,7 +105,7 @@ function App() {
           >
             <Box
               sx={{
-                fontSize: { xs: "2rem", md: "2.4rem" },
+                fontSize: { xs: "2rem", md: "4rem" },
                 lineHeight: 1,
                 animation: "floatEmoji 3.5s ease-in-out infinite",
                 userSelect: "none",
@@ -119,7 +117,12 @@ function App() {
             <Typography
               variant="overline"
               color="secondary"
-              sx={{ letterSpacing: 3.5, fontWeight: 700, fontSize: "0.65rem", mt: 0.3 }}
+              sx={{
+                letterSpacing: 3.5,
+                fontWeight: 700,
+                fontSize: "1.3rem",
+                mt: 0.3,
+              }}
             >
               Quem sou eu
             </Typography>
@@ -128,7 +131,8 @@ function App() {
                 width: 40,
                 height: 2,
                 borderRadius: 99,
-                background: "linear-gradient(90deg, transparent, #00B4D8, transparent)",
+                background:
+                  "linear-gradient(90deg, transparent, #00B4D8, transparent)",
                 mt: 0.2,
                 opacity: 0.7,
               }}
@@ -161,23 +165,30 @@ function App() {
               className="aboutMeText"
               ref={scope}
               sx={{
-                color: darkMode ? "#94A3B8" : "#475569",
+                color: darkMode ? "#e8e8e8" : "#475569",
                 lineHeight: 1.9,
                 fontSize: { xs: "0.92rem", md: "0.97rem" },
                 display: "inline",
                 letterSpacing: "0.1px",
               }}
             >
-              Desenvolvedor com experiência em ReactJS, TypeScript e ferramentas
-              como MUI, React Hook Form, Vite e muito mais. Focado em interfaces
-              modernas, responsivas e de alta performance, com deploy contínuo,
-              testes automatizados e integração com APIs REST. Proativo, orientado
-              a resultados, e aplicando boas práticas de desenvolvimento,
-              versionamento com Git/GitHub e metodologias ágeis como SCRUM. Busco
-              aprimorar habilidades com desafios de programação e projetos
-              pessoais. Formado em Ciências da Computação e Técnico em Análise e
-              Desenvolvimento de Sistemas, pronto para contribuir com soluções
-              inovadoras no desenvolvimento web.
+              Sou Desenvolvedor de Software com experiência no desenvolvimento
+              de aplicações web e mobile utilizando ReactJS, React Native,
+              TypeScript e tecnologias do ecossistema JavaScript. Atualmente
+              atuo na criação, manutenção e evolução de produtos digitais,
+              participando desde o desenvolvimento de novas funcionalidades até
+              a publicação de aplicativos nas lojas da Apple e Google. Tenho
+              experiência com testes automatizados, integrações com APIs,
+              Firebase, Google Analytics, Crashlytics, CI/CD e desenvolvimento
+              de backoffices com Strapi. Busco sempre criar soluções escaláveis,
+              performáticas e com foco na experiência do usuário, aplicando boas
+              práticas de desenvolvimento, Clean Code e metodologias ágeis. Sou
+              formado em Ciências da Computação, técnico em Análise e
+              Desenvolvimento de Sistemas e atualmente estou me especializando
+              em Engenharia de Software. Além da experiência profissional, gosto
+              de explorar novas tecnologias, desenvolver projetos pessoais e
+              enfrentar desafios de programação para continuar evoluindo como
+              desenvolvedor.
             </Typography>
 
             <Box
@@ -221,7 +232,75 @@ function App() {
 
       {/* ── Skills ── */}
       <Box sx={{ px: { xs: 2, sm: 4, md: 10 }, pt: { xs: 2, md: 3 }, pb: 0 }}>
-        <SkillsSection isMobile={isMobile} />
+        <SkillsSection isMobile={isMobile} isSmallMobile={isSmallMobile} />
+      </Box>
+
+      {/* ── Public Projects section ── */}
+      <Box
+        id="public-projects"
+        ref={scopeBox}
+        sx={{
+          mt: { xs: 3, md: 5 },
+          pb: { xs: 6, md: 10 },
+          px: { xs: 2, md: 6 },
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          position: "relative",
+        }}
+      >
+        <Box textAlign="center" mb={5}>
+          <Typography
+            variant="overline"
+            color="secondary"
+            sx={{ letterSpacing: 2.5, fontWeight: 700, fontSize: "0.68rem" }}
+          >
+            Um pouco do meu trabalho
+          </Typography>
+          <Typography
+            variant={!isMobile ? "h3" : "h4"}
+            fontWeight={800}
+            sx={{ color: darkMode ? "#E2E8F0" : "#0D1B2A", mt: 0.5 }}
+          >
+            Projetos publicados
+          </Typography>
+          <Box
+            sx={{
+              width: 56,
+              height: 4,
+              borderRadius: 99,
+              background: "linear-gradient(90deg, #00B4D8, #0077B6)",
+              mx: "auto",
+              mt: 1.5,
+            }}
+          />
+          <Typography
+            variant="body2"
+            sx={{
+              mt: 1.5,
+              color: darkMode ? "#4A6078" : "#94A3B8",
+              maxWidth: "440px",
+              mx: "auto",
+              lineHeight: 1.7,
+            }}
+          >
+            Uma seleção de projetos profissionais que mostram minha experiência
+            e habilidades como desenvolvedor.
+          </Typography>
+        </Box>
+
+        <Grid2
+          container
+          justifyContent="center"
+          spacing={{ xs: 2, sm: 3 }}
+          sx={{ width: "100%", maxWidth: "1200px" }}
+        >
+          {PublicProjects.map((project, index) => (
+            <Grid2 key={index} size={{ xs: 12, sm: 6, md: 4 }}>
+              <PublicProjectCard project={project} />
+            </Grid2>
+          ))}
+        </Grid2>
       </Box>
 
       {/* ── Projects section ── */}
@@ -251,7 +330,7 @@ function App() {
             fontWeight={800}
             sx={{ color: darkMode ? "#E2E8F0" : "#0D1B2A", mt: 0.5 }}
           >
-            Projetos
+            Projetos Acadêmicos
           </Typography>
           <Box
             sx={{
@@ -273,14 +352,14 @@ function App() {
               lineHeight: 1.7,
             }}
           >
-            Uma seleção de projetos pessoais e acadêmicos que mostram minha
-            evolução como desenvolvedor.
+            Uma seleção que mostra alguns experimentos e projetos acadêmicos que
+            desenvolvi durante minha jornada de aprendizado.
           </Typography>
         </Box>
 
         <Grid2
           container
-          justifyContent="center"
+          justifyContent="start"
           sx={{ width: "100%", maxWidth: "1200px" }}
         >
           {Projects.map((project, index) => (

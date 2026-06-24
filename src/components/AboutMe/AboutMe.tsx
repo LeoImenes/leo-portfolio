@@ -1,24 +1,28 @@
-import { Box, Button, Chip, Stack, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  Chip,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useDarkMode } from "../../hooks/useDarkMode";
 import { useState } from "react";
 import { ContactsModal } from "../Modals/ContactsModal";
-import photoDark from "../../assets/ProfilePic/photoDark.png";
-import photoLight from "../../assets/ProfilePic/photoLight.png";
+import photoDark from "../../assets/ProfilePic/newPhoto.png";
 import cv from "../../assets/Portfolio/cvLeo.pdf";
 import "./aboutMe.css";
 
 const stats = [
-  { number: "3+", label: "Anos de Exp." },
-  { number: "20+", label: "Projetos" },
-  { number: "10+", label: "Tecnologias" },
 ];
 
-const highlights = ["ReactJS", "TypeScript", "Next.js", "MUI", "REST APIs"];
+const highlights = ["React Native", "TypeScript", "NestJS", "CI/CD", "REST APIs"];
 
 export const AboutMe = () => {
   const { darkMode } = useDarkMode();
   const [open, setOpen] = useState(false);
-  const isMobile = useMediaQuery("(max-width:700px)");
+  const isMobile = useMediaQuery("(max-width:768px)");
+  const isSmallMobile = useMediaQuery("(max-width:480px)");
 
   return (
     <>
@@ -44,7 +48,12 @@ export const AboutMe = () => {
           gap={isMobile ? 6 : 10}
           justifyContent="center"
           alignItems="center"
-          sx={{ maxWidth: "1100px", width: "100%", position: "relative", zIndex: 1 }}
+          sx={{
+            maxWidth: "1100px",
+            width: "100%",
+            position: "relative",
+            zIndex: 1,
+          }}
         >
           {/* ── Left: text content ── */}
           <Box
@@ -85,12 +94,15 @@ export const AboutMe = () => {
                 animation: "fadeInUp 0.7s ease-out 0.2s both",
               }}
             >
-              Desenvolvedor{" "}
+              Desenvolvedor de {" "}
               <Box
                 component="span"
-                sx={{ color: darkMode ? "#00B4D8" : "#0077B6", fontWeight: 700 }}
+                sx={{
+                  color: darkMode ? "#00B4D8" : "#0077B6",
+                  fontWeight: 700,
+                }}
               >
-                Front-end
+                Software
               </Box>
             </Typography>
 
@@ -103,13 +115,14 @@ export const AboutMe = () => {
                 animation: "fadeInUp 0.7s ease-out 0.3s both",
               }}
             >
-              Focado em interfaces modernas, responsivas e de alta performance,
-              com experiência em ReactJS, TypeScript, APIs REST e metodologias
-              ágeis.
+              Desenvolvedor de Software focado na criação de aplicações web e
+              mobile modernas, responsivas e escaláveis, com experiência em
+              ReactJS, React Native, TypeScript, integração com APIs REST,
+              testes automatizados e metodologias ágeis.
             </Typography>
 
             {/* Tech pills */}
-            <Stack
+            {/* <Stack
               direction="row"
               flexWrap="wrap"
               gap={1}
@@ -135,7 +148,7 @@ export const AboutMe = () => {
                   }}
                 />
               ))}
-            </Stack>
+            </Stack> */}
 
             {/* Stats */}
             <Stack
@@ -192,10 +205,12 @@ export const AboutMe = () => {
                 sx={{
                   px: 3,
                   py: 1.1,
-                  background: "linear-gradient(135deg, #00B4D8 0%, #0077B6 100%)",
+                  background:
+                    "linear-gradient(135deg, #00B4D8 0%, #0077B6 100%)",
                   boxShadow: "0 6px 20px rgba(0,180,216,0.35)",
                   "&:hover": {
-                    background: "linear-gradient(135deg, #0077B6 0%, #00B4D8 100%)",
+                    background:
+                      "linear-gradient(135deg, #0077B6 0%, #00B4D8 100%)",
                     boxShadow: "0 10px 28px rgba(0,180,216,0.45)",
                     transform: "translateY(-2px)",
                   },
@@ -211,7 +226,9 @@ export const AboutMe = () => {
                 sx={{
                   px: 3,
                   py: 1.1,
-                  borderColor: darkMode ? "rgba(0,180,216,0.4)" : "rgba(0,119,182,0.4)",
+                  borderColor: darkMode
+                    ? "rgba(0,180,216,0.4)"
+                    : "rgba(0,119,182,0.4)",
                   color: darkMode ? "#00B4D8" : "#0077B6",
                   "&:hover": {
                     borderColor: darkMode ? "#00B4D8" : "#0077B6",
@@ -237,15 +254,27 @@ export const AboutMe = () => {
             }}
           >
             {/* Outer glow ring */}
-            <Box className="photo-glow" sx={{
-              "--glow": darkMode ? "rgba(0,180,216,0.18)" : "rgba(0,119,182,0.12)",
-            } as React.CSSProperties} />
-
+            <Box
+              className="photo-glow"
+              sx={
+                {
+                  "--glow": darkMode
+                    ? "rgba(0,180,216,0.18)"
+                    : "rgba(0,119,182,0.12)",
+                } as React.CSSProperties
+              }
+            />
             {/* Spinning dashed ring */}
-            <Box className="photo-ring-spin" sx={{
-              "--ring-color": darkMode ? "rgba(0,180,216,0.22)" : "rgba(0,119,182,0.18)",
-            } as React.CSSProperties} />
-
+            <Box
+              className="photo-ring-spin"
+              sx={
+                {
+                  "--ring-color": darkMode
+                    ? "rgba(0,180,216,0.22)"
+                    : "rgba(0,119,182,0.18)",
+                } as React.CSSProperties
+              }
+            />
             {/* Static solid ring */}
             <Box
               sx={{
@@ -258,8 +287,8 @@ export const AboutMe = () => {
                 zIndex: 1,
               }}
             />
-
-            {/* Orbiting accent dot */}            <Box
+            {/* Orbiting accent dot */}{" "}
+            <Box
               className="orbit-dot orbit-dot--a"
               sx={{ "--dot-color": "#00B4D8" } as React.CSSProperties}
             />
@@ -271,23 +300,24 @@ export const AboutMe = () => {
               className="orbit-dot orbit-dot--c"
               sx={{ "--dot-color": "#0077B6" } as React.CSSProperties}
             />
-
             {/* Photo */}
             <Box
               component="img"
-              src={darkMode ? photoLight : photoDark}
+              src={ photoDark}
               alt="Foto de perfil de Leonardo Imenes"
               sx={{
-                width: { xs: "200px", sm: "240px", md: "270px", lg: "310px" },
-                height: { xs: "200px", sm: "240px", md: "270px", lg: "310px" },
+                width: { xs: "180px", sm: "220px", md: "260px", lg: "300px" },
+                height: { xs: "180px", sm: "220px", md: "260px", lg: "300px" },
                 borderRadius: "50%",
                 objectFit: "cover",
                 position: "relative",
                 zIndex: 2,
+                backgroundColor: !darkMode ? "#dbecf5" : "#E2E8F0",
                 boxShadow: darkMode
                   ? "0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,180,216,0.15)"
                   : "0 20px 50px rgba(0,0,0,0.15), 0 0 30px rgba(0,119,182,0.10)",
-                transition: "transform 0.5s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease",
+                transition:
+                  "transform 0.5s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease",
                 "&:hover": {
                   transform: "scale(1.04)",
                   boxShadow: darkMode
@@ -296,8 +326,6 @@ export const AboutMe = () => {
                 },
               }}
             />
-
-
           </Box>
         </Stack>
       </Box>

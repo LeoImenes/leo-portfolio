@@ -1,22 +1,16 @@
 import { Button, Card, Chip, Stack, Typography, useMediaQuery } from "@mui/material";
 import { Box } from "@mui/material";
 import React, { useState } from "react";
-import { ProjectDetailsModal } from "../Modals/ProjectDetailsModal";
+import { motion } from "framer-motion";
 import { useDarkMode } from "../../hooks/useDarkMode";
+import { PublicProject } from "../../constants/publicProjects";
+import { PublicProjectDetailsModal } from "../Modals/PublicProjectsDetailsModal";
 
-export type Portfolio = {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  languages: string[];
+type Props = {
+  project: PublicProject;
 };
 
-export type PortfolioCardProps = {
-  portfolio: Portfolio;
-};
-
-const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolio }) => {
+const PublicProjectCard: React.FC<Props> = ({ project }) => {
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
   const isMobile = useMediaQuery("(max-width:768px)");
@@ -24,19 +18,24 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolio }) => {
   const { darkMode } = useDarkMode();
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: project.id * 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
+    >
       <Card
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onClick={() => setOpen(true)}
         sx={{
           m: { xs: 1, sm: 1.5, md: 2 },
-          width: { xs: "calc(100% - 16px)", sm: "calc(50% - 24px)", md: "360px" },
-          height: { xs: "240px", sm: "260px", md: "280px" },
+          width: { xs: "calc(100% - 16px)", sm: "calc(50% - 24px)", md: "300px" },
+          height: { xs: "420px", sm: "400px", md: "520px" },
           position: "relative",
           overflow: "hidden",
           cursor: "pointer",
-          borderRadius: "18px",
+          borderRadius: "24px",
           border: `1px solid ${
             hovered
               ? darkMode ? "rgba(0,180,216,0.4)" : "rgba(0,119,182,0.35)"
@@ -56,8 +55,8 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolio }) => {
         {/* Background image */}
         <Box
           component="img"
-          src={portfolio.image}
-          alt={portfolio.name}
+          src={project.image}
+          alt={project.name}
           sx={{
             position: "absolute",
             inset: 0,
@@ -135,38 +134,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolio }) => {
           }}
         >
           {/* Tech chips — slide up on hover */}
-          <Stack
-            direction="row"
-            flexWrap="wrap"
-            gap={0.7}
-            sx={{
-              mb: 1.5,
-              opacity: hovered ? 1 : 0,
-              transform: hovered ? "translateY(0)" : "translateY(10px)",
-              transition: "opacity 0.4s ease, transform 0.4s ease",
-              maxHeight: "44px",
-              overflow: "hidden",
-            }}
-          >
-            {portfolio.languages.slice(0, 4).map((lang) => (
-              <Chip
-                key={lang}
-                label={lang}
-                size="small"
-                sx={{
-                  height: "22px",
-                  fontSize: "0.65rem",
-                  fontWeight: 700,
-                  background: "rgba(0,180,216,0.25)",
-                  color: "#ADE8F4",
-                  border: "1px solid rgba(0,180,216,0.4)",
-                  backdropFilter: "blur(6px)",
-                  "& .MuiChip-label": { px: 1.2 },
-                  boxShadow: "0 2px 8px rgba(0,180,216,0.2)",
-                }}
-              />
-            ))}
-          </Stack>
+        
 
           {/* Project name */}
           <Typography
@@ -182,7 +150,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolio }) => {
               fontSize: { xs: "1.1rem", sm: "1.25rem" },
             }}
           >
-            {portfolio.name}
+            {project.name}
           </Typography>
 
           {/* CTA button — reveals on hover */}
@@ -217,9 +185,13 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolio }) => {
         </Box>
       </Card>
 
-      <ProjectDetailsModal open={open} setOpen={setOpen} portfolio={portfolio} />
-    </>
+      <PublicProjectDetailsModal
+        open={open}
+        setOpen={setOpen}
+        project={project}
+      />
+    </motion.div>
   );
 };
 
-export default PortfolioCard;
+export default PublicProjectCard;

@@ -20,7 +20,8 @@ export const ProjectDetailsModal: React.FC<ModalProjectCard> = ({
   open,
   setOpen,
 }) => {
-  const isMobile = useMediaQuery("(max-width:900px)");
+  const isMobile = useMediaQuery("(max-width:768px)");
+  const isSmallMobile = useMediaQuery("(max-width:480px)");
   const { darkMode } = useDarkMode();
 
   const bg     = darkMode ? "#0D1B2A" : "#FAF8F5";
@@ -147,8 +148,8 @@ export const ProjectDetailsModal: React.FC<ModalProjectCard> = ({
               position: "absolute",
               top: 14,
               right: 14,
-              width: 30,
-              height: 30,
+              width: { xs: 26, sm: 30 },
+              height: { xs: 26, sm: 30 },
               borderRadius: "50%",
               display: "flex",
               alignItems: "center",
