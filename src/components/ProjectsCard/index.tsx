@@ -20,7 +20,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ portfolio }) => {
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
   const isMobile = useMediaQuery("(max-width:768px)");
-  const isSmallMobile = useMediaQuery("(max-width:480px)");
+  //const isSmallMobile = useMediaQuery("(max-width:480px)");
   const { darkMode } = useDarkMode();
 
   return (

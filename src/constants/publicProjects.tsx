@@ -1,17 +1,17 @@
 import AJ1 from "../assets/Portfolio/AJ1.jpeg";
-import AJ2 from "../assets/Portfolio/AJ2.jpeg";
+//import AJ2 from "../assets/Portfolio/AJ2.jpeg";
 import AJ5 from "../assets/Portfolio/AJ5.jpeg";
-import AJ6 from "../assets/Portfolio/AJ6.jpeg";
-import AJ7 from "../assets/Portfolio/AJ7.jpeg";
-import P1 from "../assets/Portfolio/P1.jpeg";
+//import AJ6 from "../assets/Portfolio/AJ6.jpeg";
+//import AJ7 from "../assets/Portfolio/AJ7.jpeg";
+//import P1 from "../assets/Portfolio/P1.jpeg";
 import P2 from "../assets/Portfolio/P2.jpeg";
-import P3 from "../assets/Portfolio/P3.jpeg";
-import P4 from "../assets/Portfolio/P4.jpeg";
+//import P3 from "../assets/Portfolio/P3.jpeg";
+//import P4 from "../assets/Portfolio/P4.jpeg";
 import P5 from "../assets/Portfolio/P5.jpeg";
-import L1 from "../assets/Portfolio/L1.jpeg";
+//import L1 from "../assets/Portfolio/L1.jpeg";
 import L2 from "../assets/Portfolio/L2.jpeg";
 import L3 from "../assets/Portfolio/L3.jpeg";
-import L4 from "../assets/Portfolio/L4.jpeg";
+//import L4 from "../assets/Portfolio/L4.jpeg";
 
 export type PublicProject = {
   id: number;

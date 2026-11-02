@@ -21,7 +21,7 @@ export const ProjectDetailsModal: React.FC<ModalProjectCard> = ({
   setOpen,
 }) => {
   const isMobile = useMediaQuery("(max-width:768px)");
-  const isSmallMobile = useMediaQuery("(max-width:480px)");
+  //const isSmallMobile = useMediaQuery("(max-width:480px)");
   const { darkMode } = useDarkMode();
 
   const bg     = darkMode ? "#0D1B2A" : "#FAF8F5";

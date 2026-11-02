@@ -262,7 +262,7 @@ function App() {
             fontWeight={800}
             sx={{ color: darkMode ? "#E2E8F0" : "#0D1B2A", mt: 0.5 }}
           >
-            Projetos publicados
+            Projetos Publicados
           </Typography>
           <Box
             sx={{

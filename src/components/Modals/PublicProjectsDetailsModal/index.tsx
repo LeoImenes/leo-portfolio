@@ -1,9 +1,6 @@
 import {
   Box,
-  Button,
-  Chip,
   Modal,
-  Stack,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -28,10 +25,10 @@ export const PublicProjectDetailsModal: React.FC<Props> = ({
   const [currentImage, setCurrentImage] = useState(0);
   const controls = useAnimation();
   const isMobile = useMediaQuery("(max-width:768px)");
-  const isSmallMobile = useMediaQuery("(max-width:480px)");
+  //const isSmallMobile = useMediaQuery("(max-width:480px)");
   const { darkMode } = useDarkMode();
 
-  const handleDragEnd = (event: any, info: any) => {
+  const handleDragEnd = (_event: any, info: any) => {
     const threshold = 50;
     if (info.offset.x > threshold && currentImage > 0) {
       setCurrentImage((prev) => prev - 1);
@@ -42,13 +39,13 @@ export const PublicProjectDetailsModal: React.FC<Props> = ({
   };
 
   const bg     = darkMode ? "#0D1B2A" : "#FAF8F5";
-  const bgEl   = darkMode ? "#1B2B3B" : "#F0EDE8";
+  // const bgEl   = darkMode ? "#1B2B3B" : "#F0EDE8";
   const border = darkMode ? "rgba(0,180,216,0.18)" : "rgba(0,119,182,0.14)";
   const textPrimary  = darkMode ? "#E2E8F0" : "#1A2332";
   const textSecondary = darkMode ? "#94A3B8" : "#3D5166";
-  const chipBg   = darkMode ? "rgba(0,180,216,0.12)" : "rgba(0,119,182,0.08)";
-  const chipColor = darkMode ? "#48CAE4" : "#0077B6";
-  const chipBorder = darkMode ? "rgba(0,180,216,0.28)" : "rgba(0,119,182,0.22)";
+  // const chipBg   = darkMode ? "rgba(0,180,216,0.12)" : "rgba(0,119,182,0.08)";
+  // const chipColor = darkMode ? "#48CAE4" : "#0077B6";
+  // const chipBorder = darkMode ? "rgba(0,180,216,0.28)" : "rgba(0,119,182,0.22)";
 
   return (
     <Modal

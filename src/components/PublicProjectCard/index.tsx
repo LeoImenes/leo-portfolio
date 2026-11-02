@@ -1,4 +1,4 @@
-import { Button, Card, Chip, Stack, Typography, useMediaQuery } from "@mui/material";
+import { Button, Card,Typography, useMediaQuery } from "@mui/material";
 import { Box } from "@mui/material";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
@@ -14,7 +14,7 @@ const PublicProjectCard: React.FC<Props> = ({ project }) => {
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
   const isMobile = useMediaQuery("(max-width:768px)");
-  const isSmallMobile = useMediaQuery("(max-width:480px)");
+  //const isSmallMobile = useMediaQuery("(max-width:480px)");
   const { darkMode } = useDarkMode();
 
   return (

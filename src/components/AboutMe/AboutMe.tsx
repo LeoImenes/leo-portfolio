@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Chip,
   Stack,
   Typography,
   useMediaQuery,
@@ -13,16 +12,16 @@ import photoDark from "../../assets/ProfilePic/newPhoto.png";
 import cv from "../../assets/Portfolio/cvLeo.pdf";
 import "./aboutMe.css";
 
-const stats = [
+const stats: any[] = [
 ];
 
-const highlights = ["React Native", "TypeScript", "NestJS", "CI/CD", "REST APIs"];
+//const highlights = ["React Native", "TypeScript", "NestJS", "CI/CD", "REST APIs"];
 
 export const AboutMe = () => {
   const { darkMode } = useDarkMode();
   const [open, setOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width:768px)");
-  const isSmallMobile = useMediaQuery("(max-width:480px)");
+  //const isSmallMobile = useMediaQuery("(max-width:480px)");
 
   return (
     <>

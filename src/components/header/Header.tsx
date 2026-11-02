@@ -10,7 +10,7 @@ export const Header = () => {
   const { toggleMode, darkMode } = useDarkMode();
   const [mobileOpen, setMobileOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width:768px)");
-  const isSmallMobile = useMediaQuery("(max-width:480px)");
+ // const isSmallMobile = useMediaQuery("(max-width:480px)");
 
   const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 40 });
 
